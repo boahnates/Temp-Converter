@@ -1,0 +1,70 @@
+#include <iostream>
+#include <iomanip> //process for input/output manipulation (setprecision)
+#include <string> //for strings, duh. 
+#include <cctype> //process that allows for (toupper) or (tolower) 
+using namespace std;
+
+int main() 
+{
+    string decision = ""; //declaring and initializtion variables
+    int counter = 0;
+    double C = 0.0, F = 0.0;
+    cout << fixed << setprecision(3); //set precision (decimal) to 3. ALWAYS REMEBER TO INCLUDE "FIXED"
+    
+    //enter the menu below
+    while(decision != "exit")
+    { //begin while loop
+        cout << "Welcome, Dr. T! What would you like to convert today?" << endl;
+        cout << "\n\"fah\" = C to F" << endl;
+        cout << "\"cel\" = F to C" << endl;
+        cout << "\"exit\" = exit program" << endl;
+        cout << "Enter your decision: ";
+        getline(cin, decision, '\n'); //getline for string input
+        //convert input to all lowercase using tolower
+        for(char &c : decision) //& c has the power to change input
+        {
+            c = tolower(c);
+        }
+       
+        
+        if(decision == "fah")
+        {
+            cout << "\nWelcome to the C to F program. " << endl;
+            cout << "Enter the temperature in Celsius: ";
+            cin >> C;
+            F = (C * (9.0/5.0) ) + 32.0;
+            cout << "\t" << C << " degrees C is " << F << " degrees F." << endl << endl;
+            cin.ignore(); //clears the buffer
+            cin.clear(); //clears the error state
+        }
+        
+        
+        else if(decision == "cel")
+        {
+            cout << "\nWelcome to the F to C program. " << endl;
+            cout << "Enter the temperature in Fahrenheit: ";
+            cin >> F;
+            C = ((F - 32.0) * (5.0/9.0));
+            cout << "\t" << F << " degrees in F is " << C << " degrees C." << endl << endl;
+            cin.ignore(); //clears the buffer
+            cin.clear(); //clears the error state
+        }
+        
+        
+        else if(decision == "exit")
+        {
+            cout << "\nExiting program... \nHasta la vista, Dr. T." << endl;
+        }
+        
+        
+        else //default clause
+        {
+            cout << "\nInvalid input. Please try again." << endl;
+        }
+        
+        
+        
+    } //end while loop
+
+    return 0;
+}
